@@ -260,7 +260,7 @@ footer.sec{padding:clamp(28px,3vw,42px) clamp(18px,5vw,80px) 18px;background:#ff
 .m-actions .pill[disabled]{cursor:wait}
 
 /* Toasts */
-.toasts{position:fixed;z-index:20;top:16px;right:16px;display:grid;gap:10px;width:min(360px,calc(100vw - 32px))}
+.toasts{position:fixed;z-index:20;top:clamp(72px,12vh,120px);right:16px;display:grid;gap:10px;width:min(360px,calc(100vw - 32px))}
 .toast{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:13px 12px 13px 16px;border-radius:14px;color:#fff;font-size:15px;font-weight:500;line-height:1.35;box-shadow:0 12px 28px rgba(20,10,10,.3);animation:toast-in .2s ease-out}
 .toast.success{background:#176c46}.toast.error{background:#a8112e}
 .toast span{min-width:0;overflow-wrap:anywhere}
@@ -436,6 +436,113 @@ footer.sec{padding:clamp(28px,3vw,42px) clamp(18px,5vw,80px) 18px;background:#ff
   .cat-row li:last-child:nth-child(odd){max-width:none}
   .merry{font-size:36px}
   .who{font-size:26px}
+}
+/* ---- Responsive layout (tablet and phone) ----
+   The WordPress theme (BeTheme) wraps this page in .section_wrapper, which on small screens
+   adds 33px side padding to a 100%-wide box: the page started 33px in and ran off the right edge.
+   Give the wrapper a normal, contained width so the page sits flush and never scrolls sideways. */
+@media (max-width:1100px){
+  .section_wrapper:has(#page){box-sizing:border-box!important;width:100%!important;max-width:none!important;margin-inline:0!important;padding-inline:clamp(8px,2vw,24px)!important}
+  .the_content_wrapper:has(#page),.scu-shortcode:has(#page){width:100%!important;max-width:none!important;margin-inline:0!important;padding-inline:0!important}
+  html,body{overflow-x:clip}
+}
+#page{max-width:100%}
+
+/* Tablet: 761px – 1100px */
+@media (min-width:761px) and (max-width:1100px){
+  .hero{min-height:clamp(520px,70vw,640px)}
+  .hero-grid{padding-block:32px 150px}
+  .cat-row{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .cat-row li:last-child:nth-child(odd){grid-column:auto;max-width:none}
+  .cat-row li:nth-child(4){grid-column:1/2}
+  .cat-row li:nth-child(4),.cat-row li:nth-child(5){transform:translateX(50%)}
+  .timer{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:min(100%,460px)}
+  .timer div{width:100%}
+  .stores{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:620px;margin-inline:auto}
+  .store,.store-tile{max-width:none}
+  .cards{padding-bottom:clamp(120px,16vw,160px)}
+  .card-row{max-width:none}
+  .xcard{flex:0 1 28%}
+  .xcard.wide{flex-basis:36%}
+  .split{padding-inline:clamp(28px,5vw,48px)}
+  .closing{padding:clamp(44px,7vw,64px) 44% clamp(44px,7vw,64px) 5%}
+}
+
+/* Phone: up to 760px. Everything aligned to the left, one item per row. */
+@media (max-width:760px){
+  body{padding:8px}
+  .page{width:100%;gap:10px}
+
+  /* Hero */
+  .hero-grid{align-items:flex-start;text-align:left;padding-block:28px 120px}
+  .emblem{margin:0 0 4px;width:min(220px,70%)}
+  .who{margin-inline:0}
+  .ribbon{margin:14px 0 0;text-align:center}
+  .hero-side{width:100%}
+  .hero-side p{margin:10px 0 20px}
+
+  /* Section headings and intro text */
+  .cats,.cards,.band,.choose-head,.join,.count{text-align:left}
+  .flourish,.split .text .flourish{margin:8px 0 16px}
+  .cats>.in>p,.band p,.closing p{margin-left:0;margin-right:0}
+
+  /* Steps: one card per row, icon on the left */
+  .cat-row{grid-template-columns:minmax(0,1fr);gap:10px;margin-top:22px}
+  .cat-row li,.cat-row li:last-child:nth-child(odd){grid-column:auto;max-width:none;justify-self:stretch;transform:none}
+  .cat-row li{grid-template-columns:46px minmax(0,1fr);column-gap:14px;row-gap:2px;justify-items:start;align-items:start;padding:16px;background:#fff;box-shadow:0 4px 14px rgba(50,35,35,.06);text-align:left}
+  .cat-row li svg{grid-column:1;grid-row:1/span 3;align-self:center;width:42px;height:42px}
+  .cat-row li .cat-num,.cat-row li h3,.cat-row li p{grid-column:2}
+  .cat-row p{max-width:none}
+
+  /* Countdown: heading, then the four circles in one even row */
+  .count{flex-direction:column;align-items:flex-start;padding:28px 16px}
+  .timer{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;width:100%;max-width:340px}
+  .timer div{width:100%}
+
+  /* Voucher details */
+  .split{padding:36px 16px}
+  .split .showcase{width:min(100%,340px);margin:12px 0 0}
+  .facts{grid-template-columns:minmax(0,1fr)}
+
+  /* Greeting cards: one after the other, full width, no tilt */
+  .cards{padding-bottom:110px}
+  .card-row{flex-direction:column;align-items:stretch;gap:16px;max-width:none}
+  .xcard,.xcard.wide{flex:none;width:100%;max-width:none;order:0;transform:none}
+  .xcard{aspect-ratio:1}
+  .xcard.wide{aspect-ratio:3/2}
+  .xcard:nth-child(odd),.xcard:nth-child(even),.xcard:hover{transform:none}
+
+  /* Gallery band */
+  .band{padding:32px 4px 22px}
+
+  /* Join band */
+  .join{justify-items:start;padding:96px 18px 120px}
+  .join-pick{width:100%}
+
+  /* Supermarkets: one per row, logo beside the name */
+  .choose .middle{padding-inline:0}
+  .stores,.voucher-dialog .stores{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+  .store,.store-tile{flex:none;width:100%;max-width:none}
+  .card,.voucher-dialog .card{flex-direction:row;justify-content:flex-start;gap:16px;min-height:76px;padding:12px 44px 12px 14px;text-align:left}
+  .logo,.voucher-dialog .logo{flex:none;width:96px;height:48px}
+  .tick{top:50%;right:12px;transform:translateY(-50%)}
+  .state{margin:0;text-align:left}
+
+  /* Pop-up form */
+  .m-head{padding:34px 48px 0 0;text-align:left}
+  .m-bells{left:18px;width:44px}
+  .m-head .flourish{margin-left:0}
+  .m-facts{grid-template-columns:minmax(0,1fr)}
+
+  /* Closing and footer */
+  .closing{justify-items:start;text-align:left;padding:70vw 18px 120px}
+  .foot-top,.foot-bottom{align-items:flex-start}
+  .foot-links{margin-right:0}
+}
+@media (max-width:340px){
+  .timer{gap:5px}
+  .cat-row li{grid-template-columns:38px minmax(0,1fr);padding:14px 12px}
+  .cat-row li svg{width:36px;height:36px}
 }
 </style>
 </head>
