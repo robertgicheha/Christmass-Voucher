@@ -473,22 +473,22 @@ footer.sec{padding:clamp(28px,3vw,42px) clamp(18px,5vw,80px) 18px;background:#ff
   body{padding:8px}
   .page{width:100%;gap:10px}
 
-  /* Hero */
-  .hero-grid{align-items:flex-start;text-align:left;padding-block:28px 120px}
-  .emblem{margin:0 0 4px;width:min(220px,70%)}
-  .who{margin-inline:0}
-  .ribbon{margin:14px 0 0;text-align:center}
+  /* Hero: centred */
+  .hero-grid{align-items:center;text-align:center;padding-block:28px 120px}
+  .emblem{margin:0 auto 4px;width:min(220px,70%)}
+  .who{margin-inline:auto}
+  .ribbon{margin:14px auto 0;text-align:center}
   .hero-side{width:100%}
-  .hero-side p{margin:10px 0 20px}
+  .hero-side p{margin:10px auto 20px}
 
   /* Section headings and intro text */
   .cats,.cards,.band,.choose-head,.join,.count{text-align:left}
   .flourish,.split .text .flourish{margin:8px 0 16px}
   .cats>.in>p,.band p,.closing p{margin-left:0;margin-right:0}
 
-  /* Steps: one card per row, icon on the left */
+  /* Steps: one card per row, left-aligned, icon on the left */
   .cat-row{grid-template-columns:minmax(0,1fr);gap:10px;margin-top:22px}
-  .cat-row li,.cat-row li:last-child:nth-child(odd){grid-column:auto;max-width:none;justify-self:stretch;transform:none}
+  .cat-row li,.cat-row li:last-child:nth-child(odd){grid-column:auto;width:auto;max-width:none;justify-self:stretch;transform:none}
   .cat-row li{grid-template-columns:46px minmax(0,1fr);column-gap:14px;row-gap:2px;justify-items:start;align-items:start;padding:16px;background:#fff;box-shadow:0 4px 14px rgba(50,35,35,.06);text-align:left}
   .cat-row li svg{grid-column:1;grid-row:1/span 3;align-self:center;width:42px;height:42px}
   .cat-row li .cat-num,.cat-row li h3,.cat-row li p{grid-column:2}
@@ -507,7 +507,10 @@ footer.sec{padding:clamp(28px,3vw,42px) clamp(18px,5vw,80px) 18px;background:#ff
   /* Greeting cards: one after the other, full width, no tilt */
   .cards{padding-bottom:110px}
   .card-row{flex-direction:column;align-items:stretch;gap:16px;max-width:none}
-  .xcard,.xcard.wide{flex:none;width:100%;max-width:none;order:0;transform:none}
+  .card-row{align-items:flex-start}
+  .xcard,.xcard.wide{flex:none;max-width:none;order:0;transform:none}
+  .xcard{width:min(68%,230px)}
+  .xcard.wide{width:min(86%,300px)}
   .xcard{aspect-ratio:1}
   .xcard.wide{aspect-ratio:3/2}
   .xcard:nth-child(odd),.xcard:nth-child(even),.xcard:hover{transform:none}
@@ -535,7 +538,8 @@ footer.sec{padding:clamp(28px,3vw,42px) clamp(18px,5vw,80px) 18px;background:#ff
   .m-facts{grid-template-columns:minmax(0,1fr)}
 
   /* Closing and footer */
-  .closing{justify-items:start;text-align:left;padding:70vw 18px 120px}
+  .closing{justify-items:start;text-align:left;padding:calc(46vw + 24px) 18px 96px;background-size:66% auto;background-position:left 18px top 8px}
+  .closing .deco.bl-gifts{width:100px}
   .foot-top,.foot-bottom{align-items:flex-start}
   .foot-links{margin-right:0}
 }
